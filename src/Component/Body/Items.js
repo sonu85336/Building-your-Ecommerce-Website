@@ -6,7 +6,7 @@ import { Button, Card } from "react-bootstrap";
 
 const Items = (props) => {
   const cartcxt = useContext(CartContext);
- 
+
   return (
     <div>
       <h1 className={classes.h1}>MUSIC</h1>
@@ -31,14 +31,27 @@ const Items = (props) => {
                   type="submit"
                   value="ADD TO CART"
                   size="sm"
-                  onClick={() => cartcxt.addItem({...items,amount:1,id:Math.random().toString(36)})}
+                  onClick={() =>
+                    cartcxt.addItem({
+                      ...items,
+                      amount: 1,
+                      id: Math.random().toString(36),
+                    })
+                  }
                 />
               </span>
             </Card.Body>
           </Card>
         </div>
       ))}
-      <div style={{ color: "skyblue", textAlign: "center" }}>
+      <div
+        style={{
+          color: "skyblue",
+          textAlign: "center",
+          marginTop: "20px",
+          marginBottom: "20px",
+        }}
+      >
         <Button
           variant="secondary"
           style={{ color: "skyblue", textAlign: "center" }}
