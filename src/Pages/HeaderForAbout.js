@@ -4,7 +4,7 @@ import singingimg from '../assets/singfile.jfif'
 import Footer from '../Component/footer/Footer'
 function HeaderForAbout() {
   return (
-    <div className={classes.header}>
+    <div  >
     <div className={classes.headerforabout}>
      <h1>The Generics</h1> 
     </div>
