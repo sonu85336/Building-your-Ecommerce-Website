@@ -29,6 +29,7 @@ const NavForAll = () => {
           >
             ABOUT
           </NavLink>
+          <NavLink style ={{textDecoration:'none',color:'white'}} to="/Contactus">Contact us</NavLink>
         </Container>
       </Navbar>
       </div>
