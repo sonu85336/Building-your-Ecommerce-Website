@@ -1,8 +1,11 @@
 import React, { useEffect, useState, useCallback } from "react";
-
+import FetchMoveiForm from "./ApiFetch/FetchMoveiForm";
+ 
 import MoviesList from "./ApiFetch/MoviesList";
 import "./App.css";
 
+  
+ 
 function AppApiFetch() {
   const [movies, setMovies] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
@@ -11,21 +14,22 @@ function AppApiFetch() {
     setIsLoading(true);
     setError(null);
     try {
-      const response = await fetch("https://swapi.dev/api/films/");
+      const response = await fetch("https://react-project-ec784-default-rtdb.firebaseio.com/Movies.json");
       if (!response.ok) {
         throw new Error("Something went wrong ....Retrying");
       }
       const data = await response.json();
-
-      const transformdata = data.results.map((movieList) => {
-        return {
-          id: movieList.episode_id,
-          title: movieList.title,
-          releaseDate: movieList.release_date,
-          openingText: movieList.opening_crawl,
-        };
-      });
-      setMovies(transformdata);
+ const  loadMovies = []
+ for(let key in data){
+  loadMovies.push({
+    id:key,
+    title:data[key].title,
+    openingText: data[key].openingText,
+    releaseDate:data[key].releaseDate,
+  })
+ }
+      
+      setMovies(loadMovies);
     } catch (error) {
       setError(error.message);
     }
@@ -39,13 +43,37 @@ function AppApiFetch() {
   const retryingremovHandler = (event) => {
     setError(event.target.parentNode.remove());
   };
+   async function  onAddMOvie  (movieitem) {
+   const response = await fetch('https://react-project-ec784-default-rtdb.firebaseio.com/Movies.json',{
+      method:'POST',
+      body:JSON.stringify(movieitem),
+      headers:{
+        'Content-Type':'application/json'
+      }
+    })
+    const data = await response.json()
+    console.log(data)
+  }
+  
+  async  function  onDelete (id){
+     const response = await  fetch(`https://react-project-ec784-default-rtdb.firebaseio.com/Movies/${id}.json/`,{
+      method: 'DELETE',
+      // body:JSON.stringify(id)
+
+     })
+     return response.json()
+  }
+  
   return (
     <React.Fragment>
+      <section>
+        <FetchMoveiForm  onAddMOvie ={onAddMOvie}/>
+      </section>
       <section>
         <button onClick={ApiHandler}>Fetch Movies</button>
       </section>
       <section>
-        {!isLoading && <MoviesList movies={movies} />}
+        {!isLoading && <MoviesList  setMovies={setMovies}   onDelete={onDelete}   movies={movies} />}
 
         {!isLoading && error && <p>{error} </p>}
 
