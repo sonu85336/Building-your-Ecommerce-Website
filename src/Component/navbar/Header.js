@@ -1,4 +1,4 @@
-import Card from "react-bootstrap/Card";
+ 
 import classes from  './Header.module.css'
 
 const Header = () => {

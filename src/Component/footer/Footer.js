@@ -1,4 +1,4 @@
-import { Card } from "react-bootstrap";
+ 
 import classes from "./Footer.module.css";
 import Youtube from "../../assets/download.png";
 import Spotify from '../../assets/spotify.png'
