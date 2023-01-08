@@ -1,22 +1,31 @@
 import React from "react";
 import classes from "./FirstDetails.module.css";
+import ReactImageMagnify from "react-image-magnify";
+import Image1 from "../../../../assets/productimage/product1of1.jpg";
+import Image1200 from "../../../../assets/productimage/product1of11200.jpg";
  
- import Image1 from "../../../../assets/productimage/product1of1.jpg";
-import Image2 from "../../../../assets/productimage/product1of2.jpg";
 function FirstDetails() {
-    
-
   return (
     <div>
       <div>
-        <div className={classes.img}>
+        <div className={classes.img} >
+          <div style={{ width: "300px", height: "300px" ,display:'inline-block' }}>
+            <ReactImageMagnify
+              {...{
+                smallImage: {
+                  alt: "Wristwatch by Ted Baker London",
+                  isFluidWidth: true,
+                  src: Image1,
+                },
+                largeImage: {
+                  src: Image1200,
+                  width: 800,
+                  height: 1200,
+                },
+              }}
+            /> </div>
             
- 
-          <img src={Image1} alt="img1" width="250px" height="250px" draggable="true"></img>  
-            <img src={Image2} alt="img2" width="250px" height="250px" draggable="true"></img>  
 
-           
-           
           <ul>
             {" "}
             <h6>Smartees</h6>

@@ -1,7 +1,8 @@
 import React from "react";
 import classes from "./FirstDetails.module.css";
+import ReactImageMagnify from "react-image-magnify";
 import Image1 from "../../../../assets/productimage/product2of1.jpg";
-import Image2 from "../../../../assets/productimage/product2of2.jfif";
+import Image1200 from "../../../../assets/productimage/product2of11200.jpg";
 function SecondDetails() {
   return (
     <div>
@@ -9,20 +10,21 @@ function SecondDetails() {
       <div>
         <div>
           <div className={classes.img}>
-            <img
-              src={Image1}
-              alt="img1"
-              width="250px"
-              height="250px"
-              draggable="true"
-            ></img>
-            <img
-              src={Image2}
-              alt="img2"
-              width="250px"
-              height="250px"
-              draggable="true"
-            ></img>
+          <div style={{ width: "300px", height: "300px" ,display:'inline-block' }}>
+            <ReactImageMagnify
+              {...{
+                smallImage: {
+                  alt: "Wristwatch by Ted Baker London",
+                  isFluidWidth: true,
+                  src: Image1,
+                },
+                largeImage: {
+                  src: Image1200,
+                  width: 800,
+                  height: 1200,
+                },
+              }}
+            /> </div>
 
             <ul>
               {" "}
