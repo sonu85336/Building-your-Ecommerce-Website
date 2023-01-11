@@ -27,26 +27,41 @@ function App() {
           <Route path="/Home">
             <Home />
           </Route>
-          <Route path="/Store" exact>
-            <Store />
-          </Route>
-          <Route path="/Store/:StoreId">
-            <Product1 />
-          </Route>
-          <Route path="/Product2/:Product2">
-            <Product2 />
-          </Route>
-          <Route path="/Product3/:Product3">
-            <Product3 />
-          </Route>
-          <Route path="/Product4/:Product4">
-            <Product4 />
-          </Route>
+          {authCtx.isLoggedIn && (
+            <Route path="/Store" exact>
+              <Store />
+            </Route>
+          )}
+          {authCtx.isLoggedIn && (
+            <Route path="/Store/:StoreId">
+              <Product1 />
+            </Route>
+          )}{" "}
+          {authCtx.isLoggedIn && (
+            <Route path="/Product2/:Product2">
+              <Product2 />
+            </Route>
+          )}{" "}
+          {authCtx.isLoggedIn && (
+            <Route path="/Product3/:Product3">
+              <Product3 />
+            </Route>
+          )}{" "}
+          {authCtx.isLoggedIn && (
+            <Route path="/Product4/:Product4">
+              <Product4 />
+            </Route>
+          )}
           <Route path="/Contactus">
             <ContactUs />
           </Route>{" "}
-          <Route path="/Login">
-            <Login />
+          {!authCtx.isLoggedIn && (
+            <Route path="/Login">
+              <Login />
+            </Route>
+          )}
+          <Route path="*">
+            <Redirect to="/Login" />
           </Route>
         </Switch>
       </main>
