@@ -111,7 +111,7 @@ const Items = (props) => {
                 onClick={() =>
                   cartcxt.addItem({
                     ...props.Item[1],
-                    amount: 12,
+                    amount:1,
                     id: Math.random().toString(),
                   })
                 }

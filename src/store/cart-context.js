@@ -5,6 +5,10 @@ const CartContext = createContext({
     items:[],
     totalAmount:0,
     addItem:(item)=>{},
-    removeItem:(id)=>{}
+    removeItem:(id)=>{},
+    isLoggedIn:false,
+    login:(token)=>{},
+    logout:()=>{},
+    tokenid:'',
 })
 export default CartContext;

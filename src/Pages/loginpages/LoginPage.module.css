@@ -1,0 +1,28 @@
+.login {
+    margin:50px  380px 50px 420px;
+    background-color:white;
+    border: 2px solid #61fabf;
+    border-radius:40px;
+    padding:20px  30px 20px 30px;
+}
+.login button {
+    margin:10px  10px 5px auto;
+    border:1px solid rgb(44, 208, 175);
+    background-color: #0deccb; 
+    border-radius:12px;
+    box-shadow:rgb(9, 134, 74);
+    color:white;
+}
+
+.login input {
+    border-color:   #45e8c5;
+    border-radius:12px;
+    
+
+}
+.login label {
+    color:#07d9d2;
+}
+.login h1{
+    color:aqua;
+}
