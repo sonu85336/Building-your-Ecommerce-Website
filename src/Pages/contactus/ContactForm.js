@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import classes from "./ContactForm.module.css";
+import classes from  '../loginpages/LoginPage.module.css'
 function ContactForm(props) {
   const [enteredName, setEnteredName] = useState("");
   const [enteredEmail, setEnteredEmail] = useState("");
@@ -29,7 +29,7 @@ function ContactForm(props) {
   };
   return (
     <form onSubmit={formHandler}>
-      <div className={classes.contact}>
+      <div className={classes.login}>
         <div>
           <div>
             <label htmlFor="Name">Name</label>

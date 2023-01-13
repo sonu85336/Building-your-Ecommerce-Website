@@ -5,9 +5,14 @@ import Classes from "./Cart.module.css";
 import CloseButton from "./CloseButton";
 import CartHeader from "./CartHeader";
 import CartContext from "../../store/cart-context";
+import axios from "axios";
 const Cart = (props) => {
+  let email = localStorage.getItem('email').replace(".","").replace("@","")
   const cartctx = useContext(CartContext);
   const [price, setPrice] = useState(0);
+    
+  
+
   const priceHandler = () => {
     let ans = 0;
     cartctx.items.map((item) => (ans = ans + item.amount * item.price));
@@ -16,11 +21,15 @@ const Cart = (props) => {
   useEffect(() => {
     priceHandler();
   });
-  const ITemRemoveHandler = (id) => {
-    const arr = cartctx.items.filter((item) => item.title != id);
-    cartctx.removeItem(arr);
+  const ITemRemoveHandler = (item) => {
+    // const arr = cartctx.items.filter((item) => item.title != item.title);
+    cartctx.removeItem(item);
+     const cartid = item._id 
+     console.log(cartid)
+    axios
+    .delete(  `https://crudcrud.com/api/0ed8a21ec0674144803ffdd33b1b887f/cart${email}/${cartid}`)
   };
-  const IncreaseAndDecrease = cartctx.incAndDecFun ;
+  const IncreaseAndDecrease = cartctx.incAndDecFun;
   return (
     <Modal>
       <div>
@@ -48,16 +57,22 @@ const Cart = (props) => {
                   <span className={Classes.price}>{item.price}</span>
 
                   <span className={Classes.quantity}>{item.amount} </span>
-                  <button  className={Classes.button} onClick={() => IncreaseAndDecrease(item, -1)}>
+                  <button
+                    className={Classes.button}
+                    onClick={() => IncreaseAndDecrease(item, -1)}
+                  >
                     -
                   </button>
-                  <button  className={Classes.button} onClick={() => IncreaseAndDecrease(item, +1)}>
+                  <button
+                    className={Classes.button}
+                    onClick={() => IncreaseAndDecrease(item, +1)}
+                  >
                     +
                   </button>
                 </b>
                 <Button
                   className={Classes.removeButton}
-                  onClick={() => ITemRemoveHandler(item.title)}
+                  onClick={() => ITemRemoveHandler(item)}
                   variant="danger"
                 >
                   REMOVE

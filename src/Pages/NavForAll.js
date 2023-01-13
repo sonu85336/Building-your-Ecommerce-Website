@@ -1,11 +1,16 @@
 import { Fragment, useContext } from "react";
 import Container from "react-bootstrap/Container";
 import { Navbar } from "react-bootstrap";
-import { NavLink } from "react-router-dom";
+import { NavLink, useHistory } from "react-router-dom";
 import CartContext from "../store/cart-context";
 const NavForAll = () => {
   const authCtx = useContext(CartContext);
+  const history = useHistory()
   const isLoggedIn = authCtx.isLoggedIn;
+  const logoutHandler =()=>{
+    authCtx.logout()
+    history.replace('/Login')
+  }
   return (
     <Fragment>
       <div
@@ -45,7 +50,7 @@ const NavForAll = () => {
             >
               Login
             </NavLink>}
-             {isLoggedIn&&<button style={{textDecoration: "none", color: "white" ,background:'none',border:'none'}}>Logout</button> } 
+             {isLoggedIn&&<button style={{textDecoration: "none", color: "white" ,background:'none',border:'none'}}  onClick={logoutHandler}>Logout</button> } 
              <NavLink
               style={{ textDecoration: "none", color: "white" }}
               to="/Contactus"

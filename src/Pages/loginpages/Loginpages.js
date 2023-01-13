@@ -17,6 +17,7 @@ function Loginpages() {
     event.preventDefault();
     const enteredEmail = emailInputRef.current.value;
     const enteredPassword = passwordInputRef.current.value;
+    localStorage.setItem('email',enteredEmail)
     let url;
     if (isLogin) {
       url =
@@ -51,6 +52,7 @@ function Loginpages() {
       })
       .then((data) => {
         authCtx.login(data.idToken);
+        
         history.replace("/Store");
       })
       .catch((err) => {

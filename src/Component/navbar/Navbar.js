@@ -4,10 +4,16 @@ import { NavLink } from "react-router-dom";
 import CartButton from "./CartButton";
 import {   useContext } from "react";
 import CartContext from "../../store/cart-context";
+import { useHistory } from "react-router-dom";
 
 const Navbar1 = (props) => {
   const authCtx = useContext(CartContext)
+  const history = useHistory()
   const isLoggedIn = authCtx.isLoggedIn;
+  // const   logoutHandler =()=>{
+  //      authCtx.logout()
+  //      history.replace('/Login')
+  // }
   return (
     <div>
       <Navbar bg="dark" expand="lg" variant="dark" fixed="top">
@@ -33,7 +39,7 @@ const Navbar1 = (props) => {
             ABOUT
           </NavLink>
           
-          {isLoggedIn&&<button style={{textDecoration: "none", color: "white" ,background:'none',border:'none'}}>Logout</button> } 
+          {/* {isLoggedIn&&<button style={{textDecoration: "none", color: "white" ,background:'none',border:'none'}} onClick={logoutHandler}>Logout</button> }  */}
           <NavLink
             style={{ textDecoration: "none", color: "white" }}
             to="/Contactus"

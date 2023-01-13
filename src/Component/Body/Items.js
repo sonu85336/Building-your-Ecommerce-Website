@@ -111,7 +111,7 @@ const Items = (props) => {
                 onClick={() =>
                   cartcxt.addItem({
                     ...props.Item[1],
-                    amount:1,
+                    amount: 1,
                     id: Math.random().toString(),
                   })
                 }
@@ -131,7 +131,11 @@ const Items = (props) => {
 
           <Link to="/Product3/yellowandblack">
             {" "}
-            <Card.Img src={props.Item[2].imageUrl} style={{height:'18rem'}} alt="colorimg" />
+            <Card.Img
+              src={props.Item[2].imageUrl}
+              style={{ height: "18rem" }}
+              alt="colorimg"
+            />
           </Link>
 
           <Card.Body>

@@ -1,15 +1,18 @@
-
-import React, { useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import Header from "./Component/navbar/Header";
 import Navbar1 from "./Component/navbar/Navbar";
 import Items from "./Component/Body/Items";
 import Footer from "./Component/footer/Footer";
 import Cart from "./Component/cart/Cart";
 import CartProvider from "./store/CartProvider";
-import Image1 from './assets/productimage/product1of1.jpg'
+import Image1 from "./assets/productimage/product1of1.jpg";
+import axios from "axios";
+import CartContext from "./store/cart-context";
 
-function  Store() {
+function Store() {
   const [cartshow, setCartShow] = useState(false);
+  const cartctx = useContext(CartContext)
+let email  =localStorage.getItem('email').replace(".","").replace("@","")
   const productsArr = [
     {
       title: "White Shirt",
@@ -53,7 +56,10 @@ function  Store() {
   };
   const CartHideHandler = () => {
     setCartShow(false);
+
   };
+   
+  
   return (
     <div>
       <CartProvider>
@@ -65,7 +71,6 @@ function  Store() {
 
         <Footer></Footer>
       </CartProvider>
-     
     </div>
   );
 }

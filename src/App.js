@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext} from "react";
 
 import { Route, Switch, Redirect } from "react-router-dom";
 
@@ -12,8 +12,10 @@ import Home from "./Pages/Home";
 import Store from "./Store";
 import Login from "./Pages/loginpages/Login";
 import CartContext from "./store/cart-context";
+import axios from "axios";
 function App() {
   const authCtx = useContext(CartContext);
+   
   return (
     <div>
       <main>
